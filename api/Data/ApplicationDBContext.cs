@@ -18,7 +18,7 @@ namespace api.Data
         public DbSet<Products> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // Products unique Key *BEGIN*
+            // Products unique key *BEGIN*
             builder.Entity<Products>()
                 .HasIndex(k => new {k.ProductDate , k.ManufactureEmail})
                 .IsUnique();
@@ -31,6 +31,19 @@ namespace api.Data
                 .HasForeignKey<Products>(f => f.AppUserId)
                 .IsRequired();
             // AppUser-Products one to one relationship *END*
+
+            //JWT Setup *BEGIN*
+            base.OnModelCreating(builder);
+            List<IdentityRole> roles = new List<IdentityRole>
+            {
+                new IdentityRole
+                {
+                    Name = "User",
+                    NormalizedName = "USER"
+                },
+            };
+            builder.Entity<IdentityRole>().HasData(roles);
+            //JWT Setup *END*
         }
     }
 }
