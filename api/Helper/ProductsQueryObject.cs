@@ -7,6 +7,6 @@ namespace api.Helper
 {
     public class ProductsQueryObject
     {
-        public string? Name { get; set; }
+        public string? manufactureName { get; set; }
     }
 }

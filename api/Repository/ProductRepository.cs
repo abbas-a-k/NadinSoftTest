@@ -21,9 +21,9 @@ namespace api.Repository
         {
             var products = _context.Products.Include(e => e.AppUser).AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(query.Name))
+            if(!string.IsNullOrWhiteSpace(query.manufactureName))
             {
-                products = products.Where(e => e.AppUser.UserName.Contains(query.Name));
+                products = products.Where(e => e.AppUser.UserName.Contains(query.manufactureName));
             }
 
             return await products.ToListAsync();
