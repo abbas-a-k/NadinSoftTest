@@ -1,6 +1,7 @@
 using api.Data;
 using api.Interfaces;
 using api.Models;
+using api.Repository;
 using api.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -45,6 +46,11 @@ builder.Services.AddSwaggerGen(option =>
 });
 //Login JWT *END*
 
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+});
+
 // Add connection string *BEGIN*
 builder.Services.AddDbContext<ApplicationDBContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -87,6 +93,7 @@ builder.Services.AddAuthentication(options =>
 });
 //JWT Setup *END*
 
+builder.Services.AddScoped<IProductsRepository,ProductRepository>();
 builder.Services.AddScoped<ITokenService,TokenService>();
 
 var app = builder.Build();
