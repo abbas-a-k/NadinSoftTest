@@ -8,6 +8,6 @@ namespace api.Models
 {
     public class AppUser : IdentityUser
     {
-        public Products Products { get; set; } = new Products();
+        public Products? Products { get; set; }
     }
 }

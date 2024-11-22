@@ -27,8 +27,7 @@ namespace api.Models
         [Required]
         public bool IsAvalable { get; set; } = true;
         [Required]
-        [ForeignKey(nameof(AppUser))]
-        public string AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public string AppUserId { get; set; } = string.Empty;
+        public AppUser AppUser { get; set; } = new AppUser();
     }
 }

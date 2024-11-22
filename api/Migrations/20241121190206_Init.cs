@@ -183,7 +183,7 @@ namespace api.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "9fc0c20a-0668-41d4-b22c-205a92623004", null, "User", "USER" });
+                values: new object[] { "9e47b5d7-5eb1-4e12-9150-5b6d9f2211dd", null, "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
