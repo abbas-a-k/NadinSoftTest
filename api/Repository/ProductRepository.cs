@@ -15,13 +15,13 @@ namespace api.Repository
         private readonly ApplicationDBContext _context;
         public ProductRepository(ApplicationDBContext context)
         {
-            context = _context;
+            _context = context;
         }
         public async Task<List<Products>> GetAllProductsAsync(ProductsQueryObject query)
         {
             var products = _context.Products.Include(e => e.AppUser).AsQueryable();
 
-            if(string.IsNullOrWhiteSpace(query.Name))
+            if(!string.IsNullOrWhiteSpace(query.Name))
             {
                 products = products.Where(e => e.AppUser.UserName.Contains(query.Name));
             }
