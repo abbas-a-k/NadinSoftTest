@@ -94,6 +94,7 @@ builder.Services.AddAuthentication(options =>
 //JWT Setup *END*
 
 builder.Services.AddScoped<IProductsRepository,ProductRepository>();
+builder.Services.AddScoped<IUserProductsRepository,UserProductsRepository>();
 builder.Services.AddScoped<ITokenService,TokenService>();
 
 var app = builder.Build();
